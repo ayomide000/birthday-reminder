@@ -6,16 +6,18 @@ import List from "./List";
 const url = "https://randomuser.me/api/?results=10";
 
 const BirthdayRemider = () => {
-  const { loading, hasError, users } = useFetch(url);
-  const [people, setPeople] = useState(users);
-  // const [blog, setBlog] = useState(false);
-  console.log(users);
+  const { users } = useFetch(url);
+  // const [people, setPeople] = useState(users);
+  // const { results } = users;
+  console.log(users.results);
 
   return (
     <div>
-      {hasError && <div>{hasError}</div>}
-      {loading && <h2>Loading...</h2>}
-      {users && <List />}
+      {users.results.map((user) => {
+        // console.log(user);
+        return <List />;
+      })}
+      {/* <List /> */}
     </div>
   );
 };
