@@ -3,14 +3,24 @@ import React from "react";
 
 // const url = "https://randomuser.me/api/?results=10";
 
-const List = () => {
-  // const { users } = useFetch(url);
-  // const [people, setPeople] = useState(users);
-  // console.log(users);
+const List = ({ users }) => {
+  console.log(users);
   return (
-    <div>
-      <h1>List</h1>
-    </div>
+    <>
+      {users &&
+        users.map((user) => {
+          const { name, picture, registered, login } = user;
+          return (
+            <article key={login.uuid} className="user">
+              <img src={picture.large} alt={name.first} />
+              <div>
+                <h4>{`${name.first} ${name.last}`}</h4>
+                <p>{registered.age}</p>
+              </div>
+            </article>
+          );
+        })}
+    </>
   );
 };
 

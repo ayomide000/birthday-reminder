@@ -10,13 +10,18 @@ export const useFetch = (url) => {
     try {
       const response = await fetch(url);
       // console.log(response);
+      if (!response.ok) {
+        throw new Error("could not fetch the data");
+      }
       const data = await response.json();
       setUsers(data);
       setPage(true);
       setLoading(false);
+      setError(false);
     } catch (err) {
       console.error(err.message);
-      setError(true);
+      setError(err.message);
+      setLoading(false);
     }
   }, [url]);
 
@@ -24,5 +29,5 @@ export const useFetch = (url) => {
     getUsers();
   }, [url, getUsers]);
 
-  return { loading, hasError, users, page };
+  return { loading, hasError, users, page, setUsers };
 };

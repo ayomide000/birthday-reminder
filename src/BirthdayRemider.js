@@ -1,24 +1,23 @@
-import React, { useState } from "react";
-// import ErrorHandling from "./ErrorHandling";
+import React from "react";
 import { useFetch } from "./useFetch";
 import List from "./List";
 
 const url = "https://randomuser.me/api/?results=10";
 
 const BirthdayRemider = () => {
-  const { users } = useFetch(url);
-  // const [people, setPeople] = useState(users);
+  const { users, setUsers } = useFetch(url);
+  // const [people, setPeople] = useState(users.results);
   // const { results } = users;
-  console.log(users.results);
+  // console.log(users.results);
 
   return (
-    <div>
-      {users.results.map((user) => {
-        // console.log(user);
-        return <List />;
-      })}
-      {/* <List /> */}
-    </div>
+    <main>
+      <section className="container">
+        <h3>{users.results && users.results.length} birthdays today</h3>
+        <List users={users.results} />
+        <button onClick={() => setUsers([])}>clear all</button>
+      </section>
+    </main>
   );
 };
 
