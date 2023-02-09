@@ -20,7 +20,7 @@ export const useFetch = (url) => {
       setError(false);
     } catch (err) {
       console.error(err.message);
-      setError(err.message);
+      setError('<h2>Could not fetch data</h2>');
       setLoading(false);
     }
   }, [url]);

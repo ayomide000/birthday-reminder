@@ -1,6 +1,7 @@
 import React from "react";
 import { useFetch } from "./useFetch";
 import List from "./List";
+import ErrorBoundary from "./ErrorBoundary";
 
 const url = "https://randomuser.me/api/?results=10";
 
@@ -13,9 +14,11 @@ const BirthdayRemider = () => {
   return (
     <main>
       <section className="container">
-        <h3>{users.results && users.results.length} birthdays today</h3>
-        <List users={users.results} />
-        <button onClick={() => setUsers([])}>clear all</button>
+        <ErrorBoundary>
+          <h3>{users.results && users.results.length} birthdays today</h3>
+          <List users={users.results} />
+          <button onClick={() => setUsers([])}>clear all</button>
+        </ErrorBoundary>
       </section>
     </main>
   );
