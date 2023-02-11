@@ -20,7 +20,9 @@ export const useFetch = (url) => {
       setError(false);
     } catch (err) {
       console.error(err.message);
-      setError('<h2>Could not fetch data</h2>');
+      setError(
+        "Could not fetch data due to poor internet connection or server is down. Please try again later.",
+      );
       setLoading(false);
     }
   }, [url]);

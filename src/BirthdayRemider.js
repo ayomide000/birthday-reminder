@@ -7,6 +7,12 @@ const url = "https://randomuser.me/api/?results=10";
 
 const BirthdayRemider = () => {
   const { users, setUsers } = useFetch(url);
+  // const handleUser = () => {
+  //   if (users.results) {
+  //     setUsers((users.results.length = []));
+  //     // console.log(users);
+  //   }
+  // };
   // const [people, setPeople] = useState(users.results);
   // const { results } = users;
   // console.log(users.results);

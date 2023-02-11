@@ -4,7 +4,7 @@ import React from "react";
 // const url = "https://randomuser.me/api/?results=10";
 
 const List = ({ users }) => {
-  console.log(users);
+  // console.log(users);
   return (
     <>
       {users &&
