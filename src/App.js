@@ -10,13 +10,15 @@ function App() {
   return (
     <div>
       {hasError && <div>{hasError}</div>}
-      {loading && <h2>Loading...</h2>}
-      <Backdrop
-        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={loading}
-      >
-        <CircularProgress color="inherit" />
-      </Backdrop>
+      {loading && (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={loading}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      )}
+
       {page && <BirthdayRemider />}
     </div>
   );
